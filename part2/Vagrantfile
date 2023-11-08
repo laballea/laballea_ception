@@ -1,7 +1,7 @@
 SERVER_NODE_NAME = 'laballeaS'
 SERVER_NODE_IP = '192.168.42.110'
 
-MEM = 1024
+MEM = 2048
 CPU = 1
 BOX = "ubuntu/bionic64"
 BOX_AUTO_UPDATE = false
@@ -10,7 +10,7 @@ BOX_AUTO_UPDATE = false
 Vagrant.configure("2") do |config|
 	config.vm.box = BOX
 	config.vm.box_check_update = BOX_AUTO_UPDATE
-  
+
 	config.vm.provider "virtualbox" do |v|
 		v.memory = MEM
 		v.cpus = CPU
