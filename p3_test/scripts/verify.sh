@@ -35,13 +35,13 @@ if [ $input = 'y' ]; then
 fi
 
 echo "\033[0;32m======== Verify automated synchronization ========\033[0m"
-read -p 'Do you want to push git repo changes to verify if running app synchronizes? (y/n): ' input
-if [ $input != 'y' ]; then
-	exit 0
-fi
-if [ "$(uname)" = "Linux" ]; then
-  gh auth login
-fi
+# read -p 'Do you want to push git repo changes to verify if running app synchronizes? (y/n): ' input
+# if [ $input != 'y' ]; then
+# 	exit 0
+# fi
+# if [ "$(uname)" = "Linux" ]; then
+#   gh auth login
+# fi
 echo "WAIT until will-app pods are ready before starting... (This can take up to 4minutes)"
 SECONDS=0 #Calculate time of sync (https://stackoverflow.com/questions/8903239/how-to-calculate-time-elapsed-in-bash-script)
 kubectl wait pods -n dev --all --for condition=Ready --timeout=600s
@@ -75,10 +75,11 @@ echo "> kubectl describe deployments will-app-deployment | grep 'Image'"
 kubectl describe deployments will-app-deployment | grep 'Image'
 echo "> curl http://localhost:8888"
 curl http://localhost:8888
+exit 1
 echo "\n\033[0;36mNow we will change the git repository Argo-CD is connected to so that the image uses version $newImageVersion instead of $imageVersion\033[0m"
 git clone 'https://github.com/laballea/InceptionOfThings.git' tmp &>/dev/null
 sleep 2
-cd tmp/p3
+cd tmp/p3_test
 if [ "$(uname)" = "Darwin" ]; then
   git push --dry-run &>/dev/null #verify you have the permissions to make changes to this repo
   if [ $? -eq 128 ]
