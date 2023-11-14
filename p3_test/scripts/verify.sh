@@ -19,7 +19,6 @@ if [ $input = 'y' ]; then
   printf ' Remember those credentials. Login here https://localhost:9393 for the Argo CD UI\n'
   sleep 20
     #xdg-open 'https://localhost:9393' &>/dev/null
-  fi
 fi
 
 echo "\033[0;32m======== Verify automated synchronization ========\033[0m"

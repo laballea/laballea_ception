@@ -68,6 +68,8 @@ sleep 5
 #sleep 5
 echo "\033[0;36mView created app after sync and configuration\033[0m"
 argocd app get will --grpc-web
+kill $(ps | grep -v 'grep' | grep 'kubectl port-forward svc/will-app-service' | cut -d ' ' -f1) 2>/dev/null
+kubectl port-forward svc/will-app-service -n dev 8888:8888 &>/dev/null &
 
-./scripts/verify.sh 'called_from_launch' $1
+#./scripts/verify.sh 'called_from_launch' $1
 exit 0
