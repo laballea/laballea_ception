@@ -34,6 +34,8 @@ sleep 5
 argocd app set will --sync-policy automated --auto-prune --allow-empty --grpc-web #Once git repo is changed with new push, our running will-app will mirror that.
 sleep 5
 
+echo "\033[0;32mWAITING FOR APP TO RUN\033[0m"
+kubectl wait pods -n dev --all --for condition=Ready --timeout=600s
 #kill previous existing port and port-forward port 8888
 ./scripts/expose_app.sh
 
