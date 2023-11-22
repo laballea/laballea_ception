@@ -36,13 +36,15 @@ sleep 5
 
 echo "\033[0;32mWAITING FOR APP TO RUN\033[0m"
 kubectl wait pods -n dev --all --for condition=Ready --timeout=600s
-#kill previous existing port and port-forward port 8888
-./scripts/expose_app.sh
+
+./scripts/expose_app.sh #kill previous existing port and port-forward port 8888
 
 echo "\033[0;32m"
 echo "ARGOCD USERNAME: \033[0m admin \033[0;32m"
 echo "ARGOCD PASSWORD: \033[0m $ARGOCD_PASSWORD \033[0;32m( PASTED on CLIPBOARD)"
 echo $ARGOCD_PASSWORD | xsel --clipboard --input
 echo "ARGOCD accessible at: \033[0m http://localhost:9393 \033[0;32m"
-echo "APP accessible at: \033[0m http://localhost:8888"
+echo "APP accessible at (need port-forward): \033[0m http://localhost:8888 \033[0;32m"
+EXTERNAL_IP=$(kubectl get svc will-app-service -n dev -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo "APP accessible at: \033[0m http://$EXTERNAL_IP:8888"
 exit 0
