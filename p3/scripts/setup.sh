@@ -23,7 +23,7 @@ kubectl config set-context --current --namespace=argocd
 
 echo "\033[0;32m======== CREATE APP ========\033[0m"
 #https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
-argocd app create will --repo 'https://github.com/laballea/InceptionOfThings.git' --path 'p3/app/' --dest-namespace 'dev' --dest-server 'https://kubernetes.default.svc' --grpc-web
+argocd app create will --repo 'https://github.com/laballea/laballea_ception.git' --path 'p3/app/' --dest-namespace 'dev' --dest-server 'https://kubernetes.default.svc' --grpc-web
 sleep 5
 
 #https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
