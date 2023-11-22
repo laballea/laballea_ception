@@ -1,3 +1,6 @@
+sudo apt update -y
+sudo apt install curl net-tools -y
+
 #retrieve token file
 export TOKEN_FILE="/vagrant/scripts/token"
 

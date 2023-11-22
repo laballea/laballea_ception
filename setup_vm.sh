@@ -22,7 +22,7 @@ echo "\n>> INSTALL GH\n"
 sudo apt install gh -y
 
 echo "\n>> INSTALL VIRTUALBOX\n"
-sudo apt install virtualbox -y
+sudo apt install virtualbox-6.1 y
 sudo virtualbox --version
 
 echo "\n>> INSTALL VAGRANT\n"

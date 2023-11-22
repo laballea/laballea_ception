@@ -6,7 +6,7 @@ WORKER_NODE_IP = '192.168.56.111'
 
 MEM = 1024
 CPU = 1
-BOX = "ubuntu/bionic64"
+BOX = "debian/bullseye64"
 
 
 Vagrant.configure("2") do |config|
