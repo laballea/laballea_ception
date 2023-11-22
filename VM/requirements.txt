@@ -1,0 +1,9 @@
+git
+vim
+make
+tree
+btop
+gcc
+perl
+curl
+wget
